@@ -26,7 +26,7 @@ class Serialized_Data_Field extends Field {
 	}
 
 	function template() {
-		echo apply_filters( 'crb_serialized_data_field_output', '{{ value }}', $this->name );
+		echo apply_filters( 'crb_serialized_data_field_output', '<pre>{{ value }}</pre>', $this->name );
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Serialized_Data_Field extends Field {
 		$value = $this->get_value();
 
 		if ( !empty( $value ) ) {
-			$this->set_value( maybe_unserialize( $value ) );
+			$this->set_value( print_r( maybe_unserialize( $value ), true ) );
 		}
 	}
 
